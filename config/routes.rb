@@ -66,5 +66,7 @@ Wheel::Application.routes.draw do
     end
   end
 
+  resources :posts
+
   root 'reactor#index'
 end

@@ -68,6 +68,8 @@ Wheel::Application.routes.draw do
   end
 
   resources :posts do
+    get :from_server, on: :collection
+
     resources :comments
   end
 

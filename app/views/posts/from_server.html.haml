@@ -1,0 +1,23 @@
+%span.home-message
+%br/
+
+= react_component('PostsIndex', (render partial: 'index', formats: [:json]), { prerender: true })
+
+%pre
+  %code
+    :preserve
+    :escaped
+
+      // app/views/posts/index.html.haml
+      = react_component('PostsIndex', (render partial: 'index', formats: [:json]), prerender: true)
+
+      // app/views/posts/_index.json.jbuilder
+      json.posts(@posts) do |post|
+        json.id post.id
+        json.title post.title
+        json.content post.content
+        json.url post_url(post, format: :json)
+      end
+
+      // app/assets/components/posts/index.es6.jsx
+      class PostsIndex extends React.Component {<br/>  constructor(props) {<br/>    super(props);<br/>    var { posts } = this.props;<br/>    this.state = { posts: posts };<br/>  }<br/><br/>  render() {<br/>    let posts = this.state.posts.map((post) =&gt; {<br/>      return this.renderPost(post)<br/>    });<br/><br/>    return (<br/>      &lt;div&gt;<br/>        &lt;h1&gt;All Posts&lt;/h1&gt;<br/>        &lt;ul&gt;<br/>          {posts}<br/>        &lt;/ul&gt;<br/>        &lt;br/&gt;<br/>      &lt;/div&gt;<br/>    );<br/>  }<br/><br/>  renderPost(post) {<br/>    return (<br/>      &lt;li key={post.id}&gt;<br/>        &lt;a href={post.url}&gt;{post.title}: {post.content}&lt;/a&gt;<br/>      &lt;/li&gt;<br/>    )<br/>  }<br/>}<br/>

@@ -6,7 +6,10 @@
 bundle install
 rake setup
 bundle exec rails server
+Loging using sam@example.com and password `welcome`
 ```
+
+
 
 #### Brought to you by
 

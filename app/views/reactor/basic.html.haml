@@ -1,6 +1,8 @@
 %span.home-message
 %br/
 
+= react_component('Basic', name: 'GorbyPuff')
+
 %pre
   %code
     :preserve
@@ -8,4 +10,6 @@
 
       // reactor/basic.html.haml
       = react_component('Basic', name: 'GorbyPuff')
-= react_component('Basic', name: 'GorbyPuff')
+
+      // app/assets/components/basic.es6.jsx
+      class Basic extends React.Component {<br/><br/>  constructor(props) {<br/>    super(props);<br/>    this.state = { name: 'Vipul' };<br/>  }<br/><br/>  render() {<br/>    return (&lt;div&gt;<br/>      &lt;h1&gt;Hello, {this.props.name}&lt;/h1&gt;<br/>      &lt;h1&gt;My name is, {this.state.name}&lt;/h1&gt;<br/>    &lt;/div&gt;);<br/>  }<br/>}<br/><br/>Basic.propTypes = {<br/>  name: React.PropTypes.string.isRequired,<br/>}

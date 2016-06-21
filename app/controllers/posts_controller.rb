@@ -6,4 +6,21 @@ class PostsController < ApplicationController
   def show
     @post = Post.find params[:id]
   end
+
+  def new
+  end
+
+  def create
+    @post = Post.new(post_params)
+
+    if @post.save
+      render json: { redirect_url: posts_path }
+    else
+      render json: { errors: @post.errors.full_messages }
+    end
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :content, :user_id)
+  end
 end

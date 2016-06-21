@@ -11,7 +11,7 @@ gem 'sass-rails', '>= 5.0.3'
 gem 'uglifier', '>= 2.7.1'
 
 # database
-gem 'pg'
+gem 'sqlite3'
 
 # for building JSON
 gem 'jbuilder', '>= 2.2.13'

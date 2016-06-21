@@ -39,6 +39,12 @@ Wheel::Application.routes.draw do
   get 'pages/contact_us'
   resources :contacts, only: [:create]
 
+  resources :reactor do
+    collection do
+      get :basic
+    end
+  end
+
   authenticated :user do
     get '/pages' => 'pages#index', as: :pages
   end

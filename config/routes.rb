@@ -42,6 +42,7 @@ Wheel::Application.routes.draw do
   resources :reactor do
     collection do
       get :basic
+      get :timer
     end
   end
 

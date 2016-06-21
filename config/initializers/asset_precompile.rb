@@ -1,4 +1,4 @@
-Rails.application.config.assets.precompile += [ 'application_desktop.css',
+Rails.application.config.assets.precompile += [ 'application.css',
                                                 'application_phone.css',
-                                                'application_desktop.js',
+                                                'application.js',
                                                 'application_phone.js']

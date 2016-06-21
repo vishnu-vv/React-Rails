@@ -43,6 +43,7 @@ Wheel::Application.routes.draw do
     collection do
       get :basic
       get :timer
+      get :life_cycle_in_depth
     end
   end
 

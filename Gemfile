@@ -109,3 +109,6 @@ group :test do
   gem 'simplecov', require: false
 
 end
+
+
+gem 'react-rails', '1.7.2'

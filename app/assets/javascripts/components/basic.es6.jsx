@@ -1,19 +1,19 @@
 class Basic extends React.Component {
-
   constructor(props) {
     super(props);
-    this.state = { name: 'Vipul' };
+    this.state = { name: 'Prathamesh' };
   }
 
   render() {
-    return (<div>
-      <h1>Hello, {this.props.name}</h1>
-      <h1>My name is, {this.state.name}</h1>
-    </div>);
+    return (
+      <div>
+        <h1>Hi {this.props.name}</h1>
+        <h1>My name is {this.state.name}</h1>
+
+        <p>
+          <a className="btn btn-lg btn-success" href="/">Back</a>
+        </p>
+      </div>
+    )
   }
 }
-
-Basic.propTypes = {
-  name: React.PropTypes.string.isRequired,
-}
-

@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    render component: 'PostsNew', props: { user_id: current_user.id, create_post_url: posts_path }
   end
 
   def create

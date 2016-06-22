@@ -41,13 +41,11 @@ def create_user( options = {} )
 end
 
 def create_posts(user)
-  sample_posts = [
-  ["Rails 5 supports adding comments in migrations", "Database schemas change rapidly as project progresses. And it can be difficult to track purpose of each table and each column in a large project project with mutliple team members."],
-  ["Rails 5 allows UUID as column type in create_join_table", "In Rails 4.x create_join_table allows us to create new join table with name given in first two arguments. Rails 5 has started supporting UUID as a column type for primary key, so create_join_table should also support UUID as a column type instead of only integers. Hence now Rails 5 allows us to use UUID as a column type with create_join_table."],
-  ["Rails 5 adds another base class Application Job for jobs", "Rails 5 has added another base class ApplicationJob which inherits from ActiveJob::Base. Now by default all new Rails 5 applications will have application_job.rb."]
-]
+  sample_titles = ["Mindwise: How We Understand What Others Think, Believe, Feel, and Want - by Nicholas Epley", "So Good They Can't Ignore You - by Cal Newport", "The War of Art - by Steven Pressfield", "Thinking, Fast and Slow - by Daniel Kahneman
 
-  sample_posts.each do |post|
-    Post.create! user_id: user.id, title: post[0], content: post[1]
+"]
+
+  sample_titles.each_with_index do |title, index|
+    Post.create! user_id: user.id, title: title, content: File.read(Rails.root.to_s + "/db/posts/#{index + 1}.txt")
   end
 end

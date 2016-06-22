@@ -2,32 +2,36 @@ class PostsNew extends React.Component {
   constructor(props) {
     super(props);
     this.state = { user_id: this.props.user_id, title: '', content: '' };
-
   }
 
   render() {
     var errorMessage = this.renderErrors();
 
     return (
-      <div>
-        <h2> Add new Post </h2>
+      <div className="container">
+        <h1> Add new Post </h1>
 
         { errorMessage }
 
         <form onSubmit={this.submitPost.bind(this)}>
           <div className="form-group">
-            <textarea className="form-control"
-                      placeholder="Title"
-                      value={this.state.title}
-                      onChange={(event) => this.handleChange(event, 'title')}/>
+            <label>Title</label>
+            <input className="form-control"
+                   type="text"
+                   placeholder="Title"
+                   value={this.state.title}
+                   onChange={(event) => this.handleChange(event, 'title')} />
           </div>
 
 
           <div className="form-group">
+            <label>Content</label>
             <textarea className="form-control"
                       placeholder="Content"
                       value={this.state.content}
-                      onChange={(event) => this.handleChange(event, 'content')}/>
+                      rows="50"
+                      onChange={(event) => this.handleChange(event, 'content')}
+            />
           </div>
 
           <div className="form-group">
@@ -38,6 +42,10 @@ class PostsNew extends React.Component {
             </button>
           </div>
         </form>
+
+        <p>
+          <a className="btn btn-lg btn-success" href="/">Back</a>
+        </p>
       </div>
     );
   }
@@ -69,15 +77,6 @@ class PostsNew extends React.Component {
     console.log(this.state);
   }
 
-
-  setPosts(posts) {
-    if (posts.errors) {
-      this.setState({errors: posts.errors})
-    } else {
-      this.props.setPosts(posts);
-    }
-  }
-
   parseJSON(response) {
     return response.json()
   }
@@ -92,8 +91,9 @@ class PostsNew extends React.Component {
       success: function(data) {
         if (data.errors) {
           this.setState({ errors: data.errors });
+          $("html, body").animate({ scrollTop: 0 }, "slow");
         } else {
-          window.location = data.redirect_url
+          window.location = data.redirect_url;
         }
       }.bind(this)
     });

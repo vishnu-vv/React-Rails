@@ -29,9 +29,14 @@ class ComponentLifeCycle extends React.Component {
   render () {
     console.log("render");
 
-    return <h1 onClick={this.toggleState.bind(this)}>
-             {this.state.status.toString()}
-    </h1>
+    return (<div>
+              <h1 onClick={this.toggleState.bind(this)}>
+                  {this.state.status.toString()}
+              </h1>
+              <p>
+                <a className="btn btn-lg btn-success" href="/">Back</a>
+              </p>
+           </div>);
   }
 
   componentWillUnmount () {

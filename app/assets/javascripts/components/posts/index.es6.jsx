@@ -1,31 +1,34 @@
 class PostsIndex extends React.Component {
-  constructor(props) {
-    super(props);
-    var { posts } = this.props;
-    this.state = { posts: posts };
-  }
-
   render() {
-    let posts = this.state.posts.map((post) => {
+    let posts = this.props.posts.map((post) => {
       return this.renderPost(post)
     });
 
     return (
-      <div>
-        <h1>All Posts</h1>
-        <ul>
+      <div className="container">
+        <div className="jumbotron">
+           <h1>Book reviews by Derek Sivers</h1>
+        </div>
+
+        <section>
           {posts}
-        </ul>
-        <br/>
+        </section>
+
+        <p>
+          <a className="btn btn-lg btn-success" href="/">Back</a>
+        </p>
       </div>
     );
   }
 
   renderPost(post) {
     return (
-      <li key={post.id}>
-        <a href={post.url}>{post.title}: {post.content}</a>
-      </li>
+      <div>
+        <h2><a href={post.url}>{post.title}</a></h2>
+        <p className="blog-content">
+          {post.content}
+        </p>
+      </div>
     )
   }
 }

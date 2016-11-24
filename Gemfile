@@ -15,7 +15,7 @@ gem 'sqlite3'
 gem 'jbuilder', '>= 2.2.13'
 
 # for authentication
-gem 'devise', '3.4.1'
+gem 'devise', '3.5.6'
 
 # for sending devise emails in background
 gem 'devise-async'

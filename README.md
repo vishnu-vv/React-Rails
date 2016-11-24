@@ -13,7 +13,7 @@
 ## Setup
 
 ```
-ruby -v # I am using Ruby 2.3.1 but other versions will also work. Please make sure you are able to run the app on your Ruby version.
+ruby -v # I am using Ruby 2.3.2 but other versions will also work. Please make sure you are able to run the app on your Ruby version.
 bundle install
 bundle exec rake setup
 bundle exec rails server

@@ -1,7 +1,11 @@
 class PostsIndex extends React.Component {
+  constructor(props){
+  super(props);
+  this.state = {posts: props.posts};
+  }
   render() {
     let posts = this.props.posts.map((post) => {
-      return this.renderPost(post)
+      return <PostRow key={post.id} post={post}/>
     });
 
     return (
@@ -13,15 +17,25 @@ class PostsIndex extends React.Component {
         <section>
           {posts}
         </section>
-
         <p>
-          <a className="btn btn-lg btn-success" href="/">Back</a>
+          <a className="btn btn-lg btn-success" onClick={this.removePosts.bind(this)}>Remove Last Review</a>
+        </p>
+        <p>
+          <a className="btn btn-lg btn-success"  href="/">Back</a>
         </p>
       </div>
     );
   }
+  removePosts() {
+    let newState = { posts: this.state.posts};
+    newState.posts.pop();
+    this.setState(newState);
+  }
+}
 
-  renderPost(post) {
+class PostRow extends React.Component {
+  render() {
+    const post = this.props.post;
     return (
       <div>
         <h2><a href={post.url}>{post.title}</a></h2>
@@ -30,5 +44,9 @@ class PostsIndex extends React.Component {
         </p>
       </div>
     )
+  }
+
+  componentWillUnmount() {
+    console.log("PostRow was unmounted")
   }
 }

@@ -26,6 +26,10 @@ class ComponentLifeCycle extends React.Component {
     console.log('componentWillUpdate');
   }
 
+  componentDidUpdate () {
+    console.log('componentDidUpdate');
+  }
+
   render () {
     console.log("render");
 
